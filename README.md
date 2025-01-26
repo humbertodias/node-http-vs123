@@ -66,16 +66,6 @@ $GOOGLE_CHROME --ignore-certificate-errors
 ```
 
 
-## Pkg
-
-```shell
-npm install -g pkg
-````
-
-```shell
-pkg . --targets node20-linux-x64,node20-win-x64,node20-macos-arm64
-```
-
 ## References
 
 1. [Easy HTTP/2 Server with Node.js and Express.js](https://webapplog.com/http2-node/)
