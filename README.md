@@ -61,7 +61,10 @@ If an image appears empty, start the browser while ignoring the HTTPS certificat
 | macOS                | `/Applications/Google Chrome.app/Contents/MacOS/Google Chrome`     |
 | Linux                | `/usr/bin/google-chrome`                                           |
 
+```shell
 $GOOGLE_CHROME --ignore-certificate-errors
+```
+
 
 ## References
 
