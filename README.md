@@ -13,8 +13,8 @@ Node app to compare http 1 vs 2 vs 3 protocol.
 Clone
 
 ```shell
-git clone https://github.com/humbertodias/node-http-1-vs-2.git 
-cd node-http-1-vs-2
+git clone https://github.com/humbertodias/node-http-vs123.git 
+cd node-http-vs123
 npm install
 ```
 
@@ -53,6 +53,15 @@ http/2 spent 223/48 = **4.66x** less bytes than http/1 response.
 > [!NOTE]  
 > The original image [nodejs.png](img/nodejs.png) has 512x512 and each tile was cropped as 16x16
 
+
+If an image appears empty, start the browser while ignoring the HTTPS certificate by doing the following
+| OS                   | Chrome path                                                        |
+|----------------------|--------------------------------------------------------------------|
+| Windows              | `C:\Program Files\Google\Chrome\Application\chrome.exe`            |
+| macOS                | `/Applications/Google Chrome.app/Contents/MacOS/Google Chrome`     |
+| Linux                | `/usr/bin/google-chrome`                                           |
+
+$GOOGLE_CHROME --ignore-certificate-errors
 
 ## References
 

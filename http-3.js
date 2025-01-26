@@ -1,36 +1,44 @@
-const port = process.env.PORT || 3003;
-import { createServer } from "node:http";
+import { createServer } from "node:https"; // Use https module for SSL support
 import { createApp, eventHandler, createRouter, toNodeListener } from "h3";
 import fs from "fs";
-import { fileURLToPath } from 'url';
-import { dirname } from 'path';
+import { fileURLToPath } from "url";
+import { dirname } from "path";
 
-// Get the directory name of the current module
+const port = process.env.PORT || 3003;
+
+// Get the directory name of the current file
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const app = createApp();
+
+// Define routes
 const router = createRouter()
   .get(
     "/",
-    eventHandler(() => ({ message: "ok" }))
+    eventHandler(() => ({ message: "ok" })) // Basic route returning a message
   )
   .get(
     "/img/:path",
-    eventHandler((event) => fs.readFileSync(`img/${event.context.params.path}`))
+    eventHandler((event) => 
+      // Read and return an image from the 'img' folder
+      fs.readFileSync(`img/${event.context.params.path}`)
+    )
   );
 
 app.use(router);
+
+// SSL configuration with key and certificate
 const options = {
-  key: fs.readFileSync(`${__dirname}/ssl/server.key`),
-  cert: fs.readFileSync(`${__dirname}/ssl/server.crt`),
+  key: fs.readFileSync(`${__dirname}/ssl/server.key`), // Path to private key
+  cert: fs.readFileSync(`${__dirname}/ssl/server.crt`), // Path to certificate
 };
 
-// TODO - listen(options, port) is causing a runtime exception
-createServer(toNodeListener(app)).listen(port, (error) => {
+// Create an HTTPS server
+createServer(options, toNodeListener(app)).listen(port, (error) => {
   if (error) {
-    console.error(error);
-    return process.exit(1);
+    console.error("Error starting the server:", error); // Log error if the server fails to start
+    process.exit(1);
   } else {
-    console.log("Listening on port: http://localhost:" + port);
+    console.log(`Listening on https://localhost:${port}`); // Log the URL on successful start
   }
 });

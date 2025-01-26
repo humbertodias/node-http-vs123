@@ -24,7 +24,6 @@
             width: 512px;
             height: 512px;
         }
-
     </style>
     <script type="text/javascript">
         var imageWidth = 512,
@@ -38,23 +37,23 @@
             timeH3 = 0;
 
         function compare() {
-            document.querySelectorAll("#image-http-1 .demo-image").forEach(function(item, index) {
+            document.querySelectorAll("#image-http-1 .demo-image").forEach(function (item, index) {
                 loadedH1 = 0;
                 timeH1 = 0;
                 reloadImage1(item)
             });
         }
 
-        function reloadAllImage2(){
-            document.querySelectorAll("#image-http-2 .demo-image").forEach(function(item, index) {
+        function reloadAllImage2() {
+            document.querySelectorAll("#image-http-2 .demo-image").forEach(function (item, index) {
                 loadedH2 = 0;
                 timeH2 = 0;
                 reloadImage2(item)
             });
         }
 
-        function reloadAllImage3(){
-            document.querySelectorAll("#image-http-3 .demo-image").forEach(function(item, index) {
+        function reloadAllImage3() {
+            document.querySelectorAll("#image-http-3 .demo-image").forEach(function (item, index) {
                 loadedH3 = 0;
                 timeH3 = 0;
                 reloadImage3(item)
@@ -69,7 +68,7 @@
             elm.setAttribute("alt", t);
             elm.setAttribute("src", "");
             elm.setAttribute("src", oldSrc + "?t=" + t);
-            elm.onload = function(evt) {
+            elm.onload = function (evt) {
                 var el = evt.target;
                 var t0 = parseFloat(el.alt);
                 var t1 = performance.now();
@@ -87,11 +86,10 @@
             }
         }
 
-        function finishLoading1(){
+        function finishLoading1() {
             document.getElementById("info1").innerHTML = timeH1.toFixed(2) + " sec";
             reloadAllImage2()
         }
-
 
         function reloadImage2(elm, typeImage) {
             var oldSrc = elm.getAttribute("src");
@@ -101,7 +99,7 @@
             elm.setAttribute("alt", t);
             elm.setAttribute("src", "");
             elm.setAttribute("src", oldSrc + "?t=" + t);
-            elm.onload = function(evt) {
+            elm.onload = function (evt) {
                 var el = evt.target;
                 var t0 = parseFloat(el.alt);
                 var t1 = performance.now();
@@ -113,7 +111,7 @@
                 timeH2 += tf;
 
                 if (loadedH2 >= maxTiles) {
-                	finishLoading2()
+                    finishLoading2()
                 }
 
             }
@@ -127,7 +125,7 @@
             elm.setAttribute("alt", t);
             elm.setAttribute("src", "");
             elm.setAttribute("src", oldSrc + "?t=" + t);
-            elm.onload = function(evt) {
+            elm.onload = function (evt) {
                 var el = evt.target;
                 var t0 = parseFloat(el.alt);
                 var t1 = performance.now();
@@ -139,20 +137,20 @@
                 timeH3 += tf;
 
                 if (loadedH3 >= maxTiles) {
-                	finishLoading3()
+                    finishLoading3()
                 }
 
             }
         }
 
 
-        function finishLoading2(){
-        	document.getElementById("info2").innerHTML = timeH2.toFixed(2) + " sec";
+        function finishLoading2() {
+            document.getElementById("info2").innerHTML = timeH2.toFixed(2) + " sec";
             reloadAllImage3()
         }
 
-        function finishLoading3(){
-        	document.getElementById("info3").innerHTML = timeH3.toFixed(2) + " sec";
+        function finishLoading3() {
+            document.getElementById("info3").innerHTML = timeH3.toFixed(2) + " sec";
             updateFactor()
         }
 
@@ -160,7 +158,7 @@
             if (loadedH1 >= maxTiles && loadedH2 >= maxTiles && loadedH3 >= maxTiles) {
                 h1vsh2 = (timeH1 / timeH2).toFixed(2) + "x"
                 h2vsh3 = (timeH2 / timeH3).toFixed(2) + "x"
-                document.getElementById("infoX").innerHTML = `1x2: ${h1vsh2} - 2x3: ${h2vsh3}` ;
+                document.getElementById("infoX").innerHTML = `1x2: ${h1vsh2} - 2x3: ${h2vsh3}`;
             }
         }
 
@@ -176,7 +174,7 @@
             for (var i = begin; i < end; i++) {
                 var img = document.createElement("img")
                 img.setAttribute("class", "demo-image")
-                img.onload = function(evt) {
+                img.onload = function (evt) {
                     loaded++;
                 }
 
@@ -202,7 +200,7 @@
         function createImages() {
             createImage('image-http-1', 'http://localhost:3001', imageWidth, tileWidth);
             createImage('image-http-2', 'https://localhost:3002', imageWidth, tileWidth);
-            createImage('image-http-3', 'http://localhost:3003', imageWidth, tileWidth);
+            createImage('image-http-3', 'https://localhost:3003', imageWidth, tileWidth);
         }
 
         window.onload = createImages
@@ -214,51 +212,51 @@
 
     <table>
         <tr>
-            <tr>
-                <td>
-                    <h1>HTTP 1.1</h1>
-                </td>
-                <td>
-                    <h1>HTTP 2</h1>
-                </td>
-                <td>
-                    <h1>HTTP 3</h1>
-                </td>
-            </tr>
+        <tr>
+            <td>
+                <h1>HTTP 1</h1>
+            </td>
+            <td>
+                <h1>HTTP 2</h1>
+            </td>
+            <td>
+                <h1>HTTP 3</h1>
+            </td>
+        </tr>
 
-            <tr>
-                <td>
-                    <div id="image-http-1"></div>
-                </td>
-                <td>
-                    <div id="image-http-2"></div>
-                </td>
-                <td>
-                    <div id="image-http-3"></div>
-                </td>
+        <tr>
+            <td>
+                <div id="image-http-1"></div>
+            </td>
+            <td>
+                <div id="image-http-2"></div>
+            </td>
+            <td>
+                <div id="image-http-3"></div>
+            </td>
 
-            </tr>
-            <tr>
-                <td>
-                    <h3 id="info1">&nbsp;</h3>
-                </td>
-                <td>
-                    <h3 id="info2">&nbsp;</h3>
-                </td>
-                <td>
-                    <h3 id="info3">&nbsp;</h3>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="3">
-                    <h3 id="infoX">&nbsp;</h3>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="3">
-                    <button onclick="compare()">Compare</button>
-                </td>
-            </tr>
+        </tr>
+        <tr>
+            <td>
+                <h3 id="info1">&nbsp;</h3>
+            </td>
+            <td>
+                <h3 id="info2">&nbsp;</h3>
+            </td>
+            <td>
+                <h3 id="info3">&nbsp;</h3>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3">
+                <h3 id="infoX">&nbsp;</h3>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3">
+                <button onclick="compare()">Compare</button>
+            </td>
+        </tr>
 
     </table>
 
