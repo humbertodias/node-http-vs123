@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "bin": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "cert:csr": "openssl req -nodes -new -newkey rsa:2048 -keyout ssl/server.key -out ssl/server.csr",

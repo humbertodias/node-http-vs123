@@ -37,7 +37,7 @@ services:
 
   gateway:
     image: node
-    command: node --watch http-gateway.js
+    command: node --watch index.js
     ports:
       - "3000:3000"
     networks:
