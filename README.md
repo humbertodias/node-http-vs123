@@ -62,7 +62,7 @@ If an image appears empty, start the browser while ignoring the HTTPS certificat
 | Linux                | `/usr/bin/google-chrome`                                           |
 
 ```shell
-$GOOGLE_CHROME --ignore-certificate-errors
+$CHROME_PATH --ignore-certificate-errors
 ```
 
 
