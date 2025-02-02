@@ -9,10 +9,10 @@ endif
 run: run-backend run-chrome
 
 run-backend:
-	docker compose up -d
+	docker-compose up -d
 
 stop-backend:
-	docker compose down
+	docker-compose down
 
 run-chrome:
 	@$(CHROME_PATH) --ignore-certificate-errors http://localhost:3000 &
