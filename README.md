@@ -10,29 +10,18 @@ graph TD;
     D <---> |:3000| E[Browser];
 ```
 
-
-## Prerequires
+## Prerequisites
 
 1. [Docker](https://www.docker.com) 25+
+2. make
 
 ## Running
 
 ```shell
-docker compose up -d
+make run
 ```
+
 Access the gateway: http://localhost:3000
-
-If an image appears empty, start the browser while ignoring the HTTPS certificate by doing the following
-| OS                   | Chrome path                                                                    |
-|----------------------|--------------------------------------------------------------------------------|
-| Windows              | CHROME_PATH='C:\Program Files\Google\Chrome\Application\chrome.exe'            |
-| macOS                | CHROME_PATH='/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'     |
-| Linux                | CHROME_PATH='/snap/bin/chromium'                                               |
-
-```shell
-$CHROME_PATH --ignore-certificate-errors http://localhost:3000
-```
-
 
 ## Result
 
