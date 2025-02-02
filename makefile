@@ -18,14 +18,7 @@ run-chrome:
 	@$(CHROME_PATH) --ignore-certificate-errors http://localhost:3000 &
 	
 stop-chrome:
-	@echo "Stopping all Chrome processes with --ignore-certificate-errors"; \
 	CHROME_PIDS=$$(ps aux | grep -- '--ignore-certificate-errors' | grep -v grep | awk '{print $$2}'); \
-	if [ ! -z "$$CHROME_PIDS" ]; then \
-		echo "Killing processes: $$CHROME_PIDS"; \
-		kill $$CHROME_PIDS; \
-		echo "Chrome processes stopped."; \
-	else \
-		echo "No Chrome processes with --ignore-certificate-errors found."; \
-	fi
+	if [ ! -z "$$CHROME_PIDS" ]; then kill $$CHROME_PIDS; fi
 
 stop: stop-backend stop-chrome
