@@ -2,6 +2,15 @@
 
 Node app to compare http 1 vs 2 vs 3 protocol.
 
+```mermaid
+graph TD;
+    A[http1] -->|:3001| D{gateway};
+    B[http2] -->|:3002| D;
+    C[http3] -->|:3003| D;
+    D <---> |:3000| E[Browser];
+```
+
+
 ## Prerequires
 
 1. [Docker](https://www.docker.com) 25+
@@ -11,15 +20,6 @@ Node app to compare http 1 vs 2 vs 3 protocol.
 ```shell
 docker compose up -d
 ```
-
-```mermaid
-graph TD;
-    A[http1] -->|:3001| D{gateway};
-    B[http2] -->|:3002| D;
-    C[http3] -->|:3003| D;
-    D <---> |:3000| E[Browser];
-```
-
 Access the gateway: http://localhost:3000
 
 If an image appears empty, start the browser while ignoring the HTTPS certificate by doing the following
