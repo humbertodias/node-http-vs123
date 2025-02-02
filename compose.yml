@@ -1,8 +1,7 @@
 services:
-
   http1:
     image: node
-    command: node --watch http-1.js
+    command: sh -c "npm install && node --watch http-1.js"
     ports:
       - "3001:3001"
     networks:
@@ -13,7 +12,7 @@ services:
 
   http2:
     image: node
-    command: node --watch http-2.js
+    command: sh -c "npm install && node --watch http-2.js"
     ports:
       - "3002:3002"
       - "8443:443"
@@ -25,7 +24,7 @@ services:
 
   http3:
     image: node
-    command: node --watch http-3.js
+    command: sh -c "npm install && node --watch http-3.js"
     ports:
       - "3003:3003"
       - "8444:443"
@@ -37,7 +36,7 @@ services:
 
   gateway:
     image: node
-    command: node --watch http-gateway.js
+    command: sh -c "npm install && node --watch http-gateway.js"
     ports:
       - "3000:3000"
     networks:
